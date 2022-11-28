@@ -1,0 +1,43 @@
+#配置DataSource
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root123456
+    initialSize: 5
+    maxActice: 100
+    minIdle: 3
+    maxWait: 50000
+  main:
+    allow-circular-references: true
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  typeAliasesPackage: com.itany.pojo
+
+  global-config:
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+#    field-strategy: 2
+    #刷新mapper 调试神器
+#    refresh-mapper: true
+    db-config:
+      id-type: auto
+      #mp2.3+ 全局表前缀 t_
+      table-prefix: t_
+      #逻辑删除配置（下面3个配置）
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      insert-strategy: not_empty
+
+
+  configuration:
+    #配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId）
+    map-underscore-to-camel-case: true
+    #开启返回map结果集的下划线转驼峰
+#    object-wrapper-factory: com.baomidou.mybatisplus.extension.MybatisMapWrapperFactory
+    cache-enabled: false
+
+
+
+

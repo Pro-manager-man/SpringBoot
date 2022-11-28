@@ -1,0 +1,24 @@
+#配置DataSource
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root123456
+    initialSize: 5
+    maxActice: 100
+    minIdle: 3
+    maxWait: 50000
+  main:
+    allow-circular-references: true
+
+#配置MyBatis
+mybatis:
+  type-aliases-package: com.itany.pojo
+  mapper-locations: classpath:mapper/*.xml
+
+#配置PageHelper
+pagehelper:
+  helper-dialect: mysql
+
+
